@@ -2,6 +2,10 @@
 
     Public Sub Main()
 
-    End Sub
+        Dim current As New DisplayCurrentTime
+        current.ShowCurrentTime()
 
+        Console.ReadKey()
+
+    End Sub
 End Module
