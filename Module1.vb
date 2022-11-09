@@ -8,6 +8,9 @@
         Dim display As New DisplayDays
         display.ShowOneMonth()
 
+        Dim calender As New DisplayCalendar
+        calender.ShowCalendar()
+
         Console.ReadKey()
 
     End Sub
