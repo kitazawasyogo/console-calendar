@@ -9,23 +9,28 @@ Public Class DisplayCalendar
     Private Const PROMPTING_MASSAGE As String = "年月を[yyyy/mm]で入力してください"
 
     ''' <summary>
+    ''' 警告メッセージ定義
+    ''' </summary>
+    Private Const WARNING_MASSAGE As String = "[yyyy/mm]のフォーマット外です"
+
+    ''' <summary>
     ''' 月のカレンダー表示
     ''' </summary>
     Public Sub ShowCalendar()
 
+        Dim decision As Integer = 2
+       
+        Do
+
+        Try 
+
         Console.WriteLine(PROMPTING_MASSAGE)
+
         Dim inputValue As String = Console.ReadLine()
 
         Dim inputArray As String() = inputValue.Split("/"c)
 
-        If Not inputArray.Length = 2 OrElse Not IsNumeric(inputArray(0)) OrElse Not IsNumeric(inputArray(1)) Then
-
-            MsgBox(PROMPTING_MASSAGE)
-            Return
-
-        End If
-
-        Dim beginningDay As String = (inputValue & "/01")
+        Dim beginningDay As String = (inputValue & "/01")   
         Dim beginningDt As DateTime = DateTime.Parse(beginningDay)
         Dim beginningWeek As DayOfWeek = beginningDt.DayOfWeek
 
@@ -44,6 +49,13 @@ Public Class DisplayCalendar
             End If
 
         Next
+
+        Catch ex As Exception
+            MsgBox(WARNING_MASSAGE)
+             decision = 1
+        End Try
+
+        Loop While decision = 1
 
     End Sub
 End Class
