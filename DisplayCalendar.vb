@@ -9,41 +9,53 @@ Public Class DisplayCalendar
     Private Const PROMPTING_MASSAGE As String = "年月を[yyyy/mm]で入力してください"
 
     ''' <summary>
+    ''' 警告メッセージ定義
+    ''' </summary>
+    Private Const WARNING_MASSAGE As String = "[yyyy/mm]のフォーマット外です"
+
+    ''' <summary>
     ''' 月のカレンダー表示
     ''' </summary>
     Public Sub ShowCalendar()
 
-        Console.WriteLine(PROMPTING_MASSAGE)
-        Dim inputValue As String = Console.ReadLine()
+        Dim decision As Integer = 2
 
-        Dim inputArray As String() = inputValue.Split("/"c)
+        Do
 
-        If Not inputArray.Length = 2 OrElse Not IsNumeric(inputArray(0)) OrElse Not IsNumeric(inputArray(1)) Then
+            Try
 
-            MsgBox(PROMPTING_MASSAGE)
-            Return
+                Console.WriteLine(PROMPTING_MASSAGE)
 
-        End If
+                Dim inputValue As String = Console.ReadLine()
 
-        Dim beginningDay As String = (inputValue & "/01")
-        Dim beginningDt As DateTime = DateTime.Parse(beginningDay)
-        Dim beginningWeek As DayOfWeek = beginningDt.DayOfWeek
+                Dim inputArray As String() = inputValue.Split("/"c)
 
-        Console.Write(Space(beginningWeek * 4))
+                Dim beginningDay As String = (inputValue & "/01")
+                Dim beginningDt As DateTime = DateTime.Parse(beginningDay)
+                Dim beginningWeek As DayOfWeek = beginningDt.DayOfWeek
 
-        Dim daysInMonth As Integer = DateTime.DaysInMonth(Integer.Parse(inputArray(0)), Integer.Parse(inputArray(1)))
+                Console.Write(Space(beginningWeek * 4))
 
-        For flowOfDays As Integer = 1 To daysInMonth
+                Dim daysInMonth As Integer = DateTime.DaysInMonth(Integer.Parse(inputArray(0)), Integer.Parse(inputArray(1)))
 
-            Dim day As String = (inputValue & flowOfDays.ToString("/00"))
-            Dim dt As DateTime = DateTime.Parse(day)
+                For flowOfDays As Integer = 1 To daysInMonth
 
-            Console.Write(String.Format("{0, 4}", flowOfDays))
-            If dt.DayOfWeek = DayOfWeek.Saturday Then
-                Console.WriteLine()
-            End If
+                    Dim day As String = (inputValue & flowOfDays.ToString("/00"))
+                    Dim dt As DateTime = DateTime.Parse(day)
 
-        Next
+                    Console.Write(String.Format("{0, 4}", flowOfDays))
+                    If dt.DayOfWeek = DayOfWeek.Saturday Then
+                        Console.WriteLine()
+                    End If
+
+                Next
+
+            Catch ex As Exception
+                MsgBox(WARNING_MASSAGE)
+                decision = 1
+            End Try
+
+        Loop While decision = 1
 
     End Sub
 End Class
