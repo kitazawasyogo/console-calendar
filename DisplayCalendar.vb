@@ -18,9 +18,9 @@ Public Class DisplayCalendar
     ''' </summary>
     Public Sub ShowCalendar()
 
-        Dim decision As Integer = 2
+        Dim inputValueJudgment As Boolean = True
 
-        Do
+        Do While inputValueJudgment = True
 
             Try
 
@@ -29,6 +29,12 @@ Public Class DisplayCalendar
                 Dim inputValue As String = Console.ReadLine()
 
                 Dim inputArray As String() = inputValue.Split("/"c)
+
+                If Not inputArray.Length = 2 OrElse Not IsNumeric(inputArray(0)) OrElse Not IsNumeric(inputArray(1)) Then
+                    inputValueJudgment = True
+                Else
+                    inputValueJudgment = False
+                End If
 
                 Dim beginningDay As String = (inputValue & "/01")
                 Dim beginningDt As DateTime = DateTime.Parse(beginningDay)
@@ -52,10 +58,9 @@ Public Class DisplayCalendar
 
             Catch ex As Exception
                 MsgBox(WARNING_MASSAGE)
-                decision = 1
             End Try
 
-        Loop While decision = 1
+        Loop
 
     End Sub
 End Class
