@@ -56,8 +56,9 @@ Public Class DisplayCalendar
 
                 Next
 
-            Catch ex As Exception
+            Catch ex As ArgumentException
                 MsgBox(WARNING_MASSAGE)
+                Throw ex
             End Try
 
         Loop
