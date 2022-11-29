@@ -11,6 +11,9 @@
         Dim calender As New DisplayCalendar
         calender.ShowCalendar()
 
+        Console.WriteLine()
+        Console.WriteLine("終了するには何かキーを押してください...")
+
         Console.ReadKey()
 
     End Sub
