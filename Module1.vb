@@ -11,6 +11,9 @@
         Dim calender As New DisplayCalendar
         calender.ShowCalendar()
 
+        Dim periodcalendar As New DisplayPeriodCalendar
+        periodcalendar.ShowPeriodCalendar()
+
         Console.WriteLine()
         Console.WriteLine("終了するには何かキーを押してください...")
 
