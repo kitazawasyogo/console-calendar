@@ -43,6 +43,8 @@ Public Class DisplayCalendar
 
         Next
 
+        Console.WriteLine()
+
     End Sub
 
     ''' <summary>

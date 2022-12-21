@@ -72,6 +72,7 @@
     <Compile Include="DisplayCalendar.vb" />
     <Compile Include="DisplayDays.vb" />
     <Compile Include="DisplayCurrentTime.vb" />
+    <Compile Include="DisplayPeriodCalendar.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
