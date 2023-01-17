@@ -21,12 +21,12 @@ Public Class DisplayDays
 
         If Not r.IsMatch(inputValue) Then
 
-            MsgBox(instructions)
+            Console.WriteLine(instructions)
             Return
 
         ElseIf inputValue.Length <> 7 Then
 
-            MsgBox(instructions)
+            Console.WriteLine(instructions)
             Return
 
         End If
